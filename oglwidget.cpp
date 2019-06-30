@@ -106,7 +106,7 @@ void OGLWidget::initializeGL()
 
     m_GlobalGroup->add(m_Groups.last());
 
-    m_SkyBox = new SkyBox(100.0, QImage(":/textures/skybox1.jpg"));
+    m_SkyBox = new SkyBox(1000.0, QImage(":/textures/skybox1.jpg"));
 
     m_Timer.start(30, this);
 }
