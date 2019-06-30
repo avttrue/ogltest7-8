@@ -9,7 +9,8 @@
 class EngineObject3D :public Transformational
 {
 public:
-    EngineObject3D();
+    EngineObject3D() {}
+    ~EngineObject3D();
     bool loadProjectFromFile(const QString &filename);
     void add(Object3D* obj);
     Object3D* get(int index);

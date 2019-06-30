@@ -2,9 +2,9 @@
 
 #include <QDir>
 
-EngineObject3D::EngineObject3D()
+EngineObject3D::~EngineObject3D()
 {
-
+   for(auto o: m_Objects) delete o;
 }
 
 bool EngineObject3D::loadProjectFromFile(const QString &filename)
