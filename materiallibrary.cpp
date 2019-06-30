@@ -85,25 +85,27 @@ bool MaterialLibrary::loadFromFile(const QString &path)
         }
         else if(newMtl && key.toLower() == "ke")
         {
-          qDebug() << str;
+            qDebug() << str;
         }
         else if(newMtl && key.toLower() == "ni")
         {
-          qDebug() << str;
+            qDebug() << str;
         }
         else if(newMtl && key.toLower() == "d")
         {
-          qDebug() << str;
+            qDebug() << str;
         }
         else if(newMtl && key.toLower() == "illum")
         {
-          qDebug() << str;
+            qDebug() << str;
         }
         else if(newMtl && key.toLower() == "map_kd")
         {
             if(strlist.size() > 1)
             {
-                newMtl->setDiffuseMap(apath + strlist.at(1));
+                QString file = apath + strlist.at(1);
+                if(QFile(file).exists()) newMtl->setDiffuseMap(file);
+                else { qCritical() << "File not exists:" << file; ok = false; }
             }
             else { qCritical() << "Error at line (count):" << str; ok = false; }
         }
@@ -112,10 +114,7 @@ bool MaterialLibrary::loadFromFile(const QString &path)
 
     objfile.close();
     qDebug() << "... done";
-
-    if(!ok) return false;
-    qDebug() << "success";
-    return true;
+    return ok;
 }
 
 void MaterialLibrary::add(Material *m)

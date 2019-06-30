@@ -128,7 +128,8 @@ bool EngineObject3D::loadProjectFromFile(const QString &filename)
     objfile.close(); qDebug() <<  "... done";
 
     if(!ok) return false;
-    qDebug() << "success";
+
+    qDebug() << "Object is loaded successfully";
     if(object) object->init(vertexes, indexes, m_MatLib.get(mtlName));
     add(object);
 
