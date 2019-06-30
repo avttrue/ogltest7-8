@@ -4,10 +4,7 @@
 #include <QDebug>
 #include <QDir>
 
-MaterialLibrary::MaterialLibrary()
-{
 
-}
 
 bool MaterialLibrary::loadFromFile(const QString &path)
 {
@@ -20,7 +17,7 @@ bool MaterialLibrary::loadFromFile(const QString &path)
     m_Materials.clear();
 
     QFileInfo fi(path);
-    QString apath = fi.absolutePath() + QDir::separator();
+    auto apath = fi.absolutePath() + QDir::separator();
     Material* newMtl = nullptr;
 
     QTextStream input(&objfile);
@@ -103,7 +100,7 @@ bool MaterialLibrary::loadFromFile(const QString &path)
         {
             if(strlist.size() > 1)
             {
-                QString file = apath + strlist.at(1);
+                auto file = apath + strlist.at(1);
                 if(QFile(file).exists()) newMtl->setDiffuseMap(file);
                 else { qCritical() << "File not exists:" << file; ok = false; }
             }

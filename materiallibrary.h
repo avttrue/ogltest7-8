@@ -8,7 +8,7 @@ class Material;
 class MaterialLibrary
 {
 public:
-    MaterialLibrary();
+    MaterialLibrary() {}
     bool loadFromFile(const QString &path);
     void add(Material* m);
     Material* get(int index);

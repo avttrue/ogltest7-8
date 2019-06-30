@@ -4,7 +4,7 @@
 
 EngineObject3D::~EngineObject3D()
 {
-   for(auto o: m_Objects) delete o;
+    for(auto o: m_Objects) delete o;
 }
 
 bool EngineObject3D::loadProjectFromFile(const QString &filename)
@@ -39,8 +39,9 @@ bool EngineObject3D::loadProjectFromFile(const QString &filename)
             if(strlist.size() > 1)
             {
                 QFileInfo fi(filename);
-                QString apath = fi.absolutePath() + QDir::separator();
-                ok = m_MatLib.loadFromFile(fi.absolutePath() + QDir::separator() + strlist.at(1));
+                auto file = fi.absolutePath() + QDir::separator() + strlist.at(1);
+                if(QFile(file).exists()) ok = m_MatLib.loadFromFile(file);
+                else { qCritical() << "File not exists:" << file; ok = false; }
             }
             else { qCritical() << "Error at line (count):" << str; ok = false; }
         }
