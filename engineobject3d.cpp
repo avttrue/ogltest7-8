@@ -38,8 +38,7 @@ bool EngineObject3D::loadProjectFromFile(const QString &filename)
         {
             if(strlist.size() > 1)
             {
-                QFileInfo fi(filename);
-                auto file = fi.absolutePath() + QDir::separator() + strlist.at(1);
+                auto file = QFileInfo(filename).absolutePath() + QDir::separator() + strlist.at(1);
                 if(QFile(file).exists()) ok = m_MatLib.loadFromFile(file);
                 else { qCritical() << "File not exists:" << file; ok = false; }
             }

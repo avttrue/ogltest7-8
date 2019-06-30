@@ -16,8 +16,7 @@ bool MaterialLibrary::loadFromFile(const QString &path)
     for(auto o: m_Materials) delete o;
     m_Materials.clear();
 
-    QFileInfo fi(path);
-    auto apath = fi.absolutePath() + QDir::separator();
+    auto apath = QFileInfo(path).absolutePath() + QDir::separator();
     Material* newMtl = nullptr;
 
     QTextStream input(&objfile);
