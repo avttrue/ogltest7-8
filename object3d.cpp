@@ -51,7 +51,7 @@ void Object3D::init(const QVector<VertexData> &vert, const QVector<GLuint> &ind,
 
     m_Material = mat;
 
-    m_Texture = new QOpenGLTexture(m_Material->getDiffuseMap().mirrored());
+    m_Texture = new QOpenGLTexture(m_Material->DiffuseMap().mirrored());
     m_Texture->setMinificationFilter(QOpenGLTexture::Nearest);
     m_Texture->setMagnificationFilter(QOpenGLTexture::Linear);
     m_Texture->setWrapMode(QOpenGLTexture::Repeat);

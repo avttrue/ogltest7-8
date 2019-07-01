@@ -5,33 +5,32 @@
 #include <QString>
 #include <QVector3D>
 
-
 class Material
 {
 public:
-    Material() {}
+    Material(){}
 
-    QString getName();
+    QString Name();
     void setName(const QString &n);
 
-    QVector3D getDiffuseColor() const;
+    QVector3D DiffuseColor() const;
     void setDiffuseColor(const QVector3D &dc);
 
-    QVector3D getAmbienceColor() const;
+    QVector3D AmbienceColor() const;
     void setAmbienceColor(const QVector3D &ac);
 
-    QVector3D getSpecularColor() const;
+    QVector3D SpecularColor() const;
     void setSpecularColor(const QVector3D &sc);
 
-    float getShines() const;
+    float Shines() const;
     void setShines(const float &s);
 
-    QImage getDiffuseMap() const;
+    QImage DiffuseMap() const;
     void setDiffuseMap(const QString &filename);
-     void setDiffuseMap(const QImage &image);
+    void setDiffuseMap(const QImage &image);
 
 private:
-    QString m_MtlName;
+    QString m_Name;
     QVector3D m_DiffuseColor;
     QVector3D m_AmbienceColor;
     QVector3D m_SpecularColor;

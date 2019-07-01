@@ -9,7 +9,7 @@ class MaterialLibrary
 {
 public:
     MaterialLibrary() {}
-    bool loadFromFile(const QString &path);
+    bool load(const QString &filename);
     void add(Material* m);
     Material* get(int index);
     Material* get(const QString &name);

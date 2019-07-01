@@ -9,9 +9,9 @@
 class EngineObject3D :public Transformational
 {
 public:
-    EngineObject3D() {}
+    EngineObject3D(){}
     ~EngineObject3D();
-    bool loadProjectFromFile(const QString &filename);
+    bool load(const QString &filename);
     void add(Object3D* obj);
     Object3D* get(int index);
 
@@ -23,7 +23,7 @@ public:
 
 private:
     QVector<Object3D*> m_Objects;
-    MaterialLibrary m_MatLib;
+    MaterialLibrary m_MatLibrary;
 };
 
 #endif // ENGINEOBJECT3D_H

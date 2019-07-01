@@ -7,7 +7,7 @@ EngineObject3D::~EngineObject3D()
     for(auto o: m_Objects) delete o;
 }
 
-bool EngineObject3D::loadProjectFromFile(const QString &filename)
+bool EngineObject3D::load(const QString &filename)
 {
     QFile objfile(filename);
 
@@ -39,7 +39,7 @@ bool EngineObject3D::loadProjectFromFile(const QString &filename)
             if(strlist.size() > 1)
             {
                 auto file = QFileInfo(filename).absolutePath() + QDir::separator() + strlist.at(1);
-                if(QFile(file).exists()) ok = m_MatLib.loadFromFile(file);
+                if(QFile(file).exists()) ok = m_MatLibrary.load(file);
                 else { qCritical() << "File not exists:" << file; ok = false; }
             }
             else { qCritical() << "Error at line (count):" << str; ok = false; }
@@ -112,7 +112,7 @@ bool EngineObject3D::loadProjectFromFile(const QString &filename)
         {
             if(strlist.size() > 1)
             {
-                if(object) object->init(vertexes, indexes, m_MatLib.get(mtlName));
+                if(object) object->init(vertexes, indexes, m_MatLibrary.get(mtlName));
                 mtlName = strlist.at(1);
                 add(object);
 
@@ -124,13 +124,12 @@ bool EngineObject3D::loadProjectFromFile(const QString &filename)
         }
     }
 
-
-    objfile.close(); qDebug() <<  "... done";
+    objfile.close(); qDebug() <<  "... done" << filename;
 
     if(!ok) return false;
 
     qDebug() << "Object is loaded successfully";
-    if(object) object->init(vertexes, indexes, m_MatLib.get(mtlName));
+    if(object) object->init(vertexes, indexes, m_MatLibrary.get(mtlName));
     add(object);
 
     return true;

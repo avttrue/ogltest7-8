@@ -24,9 +24,9 @@ public:
 private:
     QQuaternion m_Rotate;
     QVector3D m_Translate;
-    float m_Scale;
     QMatrix4x4 m_GlobalTransform;
     QVector<Transformational*> m_Objects;
+    float m_Scale;
 };
 
 #endif // GROUPOBJECTS_H

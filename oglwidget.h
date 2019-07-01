@@ -34,7 +34,6 @@ protected:
 
     void initShaders();
     void initCube(float width, const QString &imgpath);
-    //void initObject(float width, const QString &imgpath);
 
 private:
     QMatrix4x4 m_PojectionMatrix;
@@ -45,10 +44,8 @@ private:
     QVector<EngineObject3D*> m_Objects;
     QVector<GroupObjects*> m_Groups;
     GroupObjects* m_GlobalGroup;
-
     Eye* m_Eye;
     SkyBox* m_SkyBox;
-
     QBasicTimer m_Timer;
 
     double m_AngleObject;
@@ -57,7 +54,6 @@ private:
     double m_AngleGrop3;
     double m_AngleGrop4;
     double m_AngleGropMain;
-
     int currentGroup = 0;
 };
 

@@ -4,23 +4,21 @@
 #include <QDebug>
 #include <QDir>
 
-
-
-bool MaterialLibrary::loadFromFile(const QString &path)
+bool MaterialLibrary::load(const QString &filename)
 {
-    QFile objfile(path);
+    QFile mtlfile(filename);
 
-    if(! objfile.exists()) { qCritical() << "File not exist:" << path; return false; }
-    if(! objfile.open(QFile::ReadOnly))  { qCritical() << "File not opened:" << path; return false; }
+    if(! mtlfile.exists()) { qCritical() << "File not exist:" << filename; return false; }
+    if(! mtlfile.open(QFile::ReadOnly))  { qCritical() << "File not opened:" << filename; return false; }
 
     for(auto o: m_Materials) delete o;
     m_Materials.clear();
 
-    auto apath = QFileInfo(path).absolutePath() + QDir::separator();
+    auto apath = QFileInfo(filename).absolutePath() + QDir::separator();
     Material* newMtl = nullptr;
 
-    QTextStream input(&objfile);
-    qDebug() << "Reading" << path << "...";
+    QTextStream input(&mtlfile);
+    qDebug() << "Reading" << filename << "...";
 
     bool ok = true;
     while(!input.atEnd())
@@ -108,8 +106,8 @@ bool MaterialLibrary::loadFromFile(const QString &path)
         add(newMtl);
     }
 
-    objfile.close();
-    qDebug() << "... done";
+    mtlfile.close();
+    qDebug() << "... done" << filename;
     return ok;
 }
 
@@ -128,7 +126,7 @@ Material *MaterialLibrary::get(int index)
 
 Material *MaterialLibrary::get(const QString &name)
 {
-    for(auto o: m_Materials) if(o->getName() == name) return o;
+    for(auto o: m_Materials) if(o->Name() == name) return o;
     return nullptr;
 }
 

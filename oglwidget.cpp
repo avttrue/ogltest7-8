@@ -83,17 +83,17 @@ void OGLWidget::initializeGL()
 
     m_Groups.append(new GroupObjects);
     m_Objects.append(new EngineObject3D);
-    if(m_Objects.last()->loadProjectFromFile(":/models/sphere.obj"))
+    if(m_Objects.last()->load(":/models/sphere.obj"))
     {
         m_Objects.last()->translate(QVector3D(-2.0f, 2.0f, 2.0f));
         m_Groups.last()->add(m_Objects.last());
     }
-    if(m_Objects.last()->loadProjectFromFile(":/models/cube.obj"))
+    if(m_Objects.last()->load(":/models/cube.obj"))
     {
         m_Objects.last()->translate(QVector3D(-2.0f, 2.0f, 2.0f));
         m_Groups.last()->add(m_Objects.last());
     }
-    if(m_Objects.last()->loadProjectFromFile(":/models/pyramid.obj"))
+    if(m_Objects.last()->load(":/models/pyramid.obj"))
     {
         m_Objects.last()->translate(QVector3D(-2.0f, 2.0f, 2.0f));
         m_Groups.last()->add(m_Objects.last());
